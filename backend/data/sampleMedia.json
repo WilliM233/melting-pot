@@ -1,0 +1,14 @@
+[
+    {
+      "id": 1,
+      "title": "Spider-Man: Into the Spider-Verse",
+      "type": "movie",
+      "rating": 9.5
+    },
+    {
+      "id": 2,
+      "title": "Saga Vol. 1",
+      "type": "comic",
+      "rating": 9.0
+    }
+  ]
