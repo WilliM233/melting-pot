@@ -1,13 +1,10 @@
 export default function Home() {
     return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold mb-4">Welcome to The Melting Pot 🔥</h1>
-        <p className="text-lg text-gray-700">
-          This is the hub of Meltview, The Lizzy Lens, and beyond.
-        </p>
-        <p className="mt-4 text-gray-600">
-          Use the navigation bar above to explore your media shelf.
-        </p>
+      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+        <div className="px-4 py-20 sm:py-24 md:py-32 text-center">
+          <h1 className="lg:text-6xl text-4xl font-bold tracking-wide mb-4 tracking-wider">THE MELTING POT</h1>
+          <h3 className="text-lg text-gray-300 max-w-xl">The cultural hub for <span className="text-orange-400 font-medium">Meltview</span>, The Lizzy Lens, and beyond.</h3>
+        </div>
       </div>
     );
   }
