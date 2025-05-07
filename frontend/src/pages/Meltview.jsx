@@ -4,7 +4,7 @@ export default function Meltview() {
   const [media, setMedia] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/media')
+    fetch(`${apiBase}/media`)
       .then(res => res.json())
       .then(setMedia)
       .catch(err => console.error("Failed to load media:", err));
