@@ -4,6 +4,7 @@ export default function Meltview() {
   const [media, setMedia] = useState([]);
 
   useEffect(() => {
+    const apiBase = import.meta.env.VITE_API_URL;
     fetch(`${apiBase}/media`)
       .then(res => res.json())
       .then(setMedia)
