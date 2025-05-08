@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white flex-col">
@@ -14,9 +16,9 @@ export default function Home() {
             <a href="https://thelizzylens.com/" target="_blank" rel="noopener noreferrer"
                className="block p-6 bg-gray-800 rounded-xl shadow hover:bg-gray-700 hover:scale-105 transform transition-transform duration-200">
                     🔍<span className="ml-2 font-semibold text-lg">The Lizzy Lens</span></a>
-            <div className="block p-6 bg-gray-800 rounded-xl opacity-60 cursor-not-allowed">
-                    🎞️ <span className="ml-2 font-semibold text-lg">Meltview</span>
-            </div>
+            <Link to="/meltview" className="block p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition">
+              🎞️ <span className="ml-2 font-semibold text-lg">Meltview</span>
+            </Link>
             <div className="block p-6 bg-gray-800 rounded-xl opacity-60 cursor-not-allowed">
                     🧠 <span className="ml-2 font-semibold text-lg">The Melting Muse</span>
             </div>
