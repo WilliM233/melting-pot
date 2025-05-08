@@ -1,29 +1,48 @@
-import { useEffect, useState } from 'react';
+import React from "react";
 
 export default function Meltview() {
-  const [media, setMedia] = useState([]);
-
-  useEffect(() => {
-    const apiBase = import.meta.env.VITE_API_URL;
-    fetch(`${apiBase}/media`)
-      .then(res => res.json())
-      .then(setMedia)
-      .catch(err => console.error("Failed to load media:", err));
-  }, []);
+  // Temporary login mock
+  const isLoggedIn = false; // Change to true to test other view
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Meltview Library</h2>
-      <ul className="space-y-4">
-        {media.map(item => (
-          <li key={item.id} className="p-4 border rounded-lg shadow">
-            <h3 className="text-lg font-semibold">{item.title}</h3>
-            <p className="text-sm text-gray-600">
-              Type: {item.type} | Rating: {item.rating}/10
-            </p>
-          </li>
-        ))}
-      </ul>
+    <div className="min-h-screen bg-gray-900 text-white px-6 py-12">
+      {!isLoggedIn ? (
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-4">Welcome to Meltview</h1>
+          <p className="text-gray-400 mb-6">
+            Track, explore, and reflect on the stories that shape you.
+          </p>
+          <input
+            type="text"
+            placeholder="Search books, shows, or comics..."
+            className="w-full px-4 py-2 rounded bg-gray-800 text-white placeholder-gray-500 mb-6"
+          />
+          <a
+            href="#"
+            className="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 transition"
+          >
+            Create Your Shelf
+          </a>
+        </div>
+      ) : (
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-3xl font-bold mb-6">Welcome back, William</h1>
+
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-2">Your Shelves</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-gray-800 p-4 rounded">Want to Read</div>
+              <div className="bg-gray-800 p-4 rounded">Reading</div>
+              <div className="bg-gray-800 p-4 rounded">Owned</div>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Recent Activity</h2>
+            <div className="bg-gray-800 p-4 rounded">You rated "Watchmen" 9/10</div>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  )
 }
