@@ -32,14 +32,18 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+import { getUserById } from '../models/userStore.js';
+
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await findOrCreateUser({ id });
+    const user = await getUserById(id);
     done(null, user);
   } catch (err) {
+    console.error("❌ Failed to deserialize user:", err);
     done(err);
   }
 });
+
 
 router.get(
   '/google',
