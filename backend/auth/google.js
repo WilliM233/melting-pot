@@ -36,10 +36,16 @@ import { getUserById } from '../models/userStore.js';
 
 passport.deserializeUser(async (id, done) => {
   try {
+    console.log("Attempting to deserialize user with ID:", id);
     const user = await getUserById(id);
+    if (!user) {
+      console.warn("No user found for ID:", id);
+      return done(null, false); // <-- This avoids crashing but fails auth
+    }
+    console.log("Deserialized user:", user);
     done(null, user);
   } catch (err) {
-    console.error("❌ Failed to deserialize user:", err);
+    console.error("Failed to deserialize user:", err);
     done(err);
   }
 });
@@ -53,13 +59,18 @@ router.get(
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    failureRedirect: '/',
+    failureRedirect: '/auth/failure',
   }),
   (req, res) => {
-    console.log("✅ Google callback hit. Session:", req.session);
-    console.log("🌐 Redirecting to:", process.env.CLIENT_URL + '/meltview');
+    console.log("Google callback hit. Session:", req.session);
+    console.log("Redirecting to:", process.env.CLIENT_URL + '/meltview');
     res.redirect(process.env.CLIENT_URL + '/meltview');
   }
 );
+
+router.get('/failure', (req, res) => {
+  console.error("Google OAuth failed");
+  res.status(401).send('OAuth failed');
+});
 
 export default router;

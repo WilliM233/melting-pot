@@ -14,5 +14,6 @@ export function findOrCreateUser(profile) {
 }
 
 export function getUserById(id) {
+  console.log("getUserById called with:", id);
   return users[id]; // or however you store users
 }
