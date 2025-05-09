@@ -46,8 +46,11 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/',
-    successRedirect: `${process.env.CLIENT_URL}/meltview`,
-  })
+  }),
+  (req, res) => {
+    console.log("✅ Google callback hit. Session:", req.session);
+    res.redirect(process.env.CLIENT_URL + '/meltview');
+  }
 );
 
 export default router;
