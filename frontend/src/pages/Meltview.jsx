@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { apiBase } from "../apiBase";
 
 export default function Meltview() {
   const { user, setUser } = useContext(UserContext);
@@ -35,7 +36,7 @@ export default function Meltview() {
             className="w-full px-4 py-2 rounded bg-gray-800 text-white placeholder-gray-500 mb-6"
           />
           <a
-            href="http://localhost:3001/auth/google"
+            href={`${apiBase}/auth/google`}
             className="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 transition"
           >
             Sign in with Google
