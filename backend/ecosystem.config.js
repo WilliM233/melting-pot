@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   apps: [
     {
       name: "melting-backend",
@@ -8,4 +8,4 @@ export default {
       }
     }
   ]
-}
+};
