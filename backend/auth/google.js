@@ -32,9 +32,13 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-  const user = findOrCreateUser({ id });
-  done(null, user);
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await findOrCreateUser({ id });
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
 });
 
 router.get(
