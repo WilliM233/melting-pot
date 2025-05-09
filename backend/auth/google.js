@@ -12,7 +12,7 @@ const CLIENT_URL = process.env.CLIENT_URL;
 
 const callbackURL = `${process.env.SERVER_URL}/auth/google/callback`;
 
-console.log("🚀 Google OAuth callback URL:", callbackURL);
+console.log("Google OAuth callback URL:", callbackURL);
 
 passport.use(
   new GoogleStrategy(
@@ -46,7 +46,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/',
-    successRedirect: 'http://localhost:5173/meltview',
+    successRedirect: `${process.env.CLIENT_URL}/meltview`,
   })
 );
 
