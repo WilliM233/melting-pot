@@ -1,7 +1,3 @@
-import dotenv from 'dotenv';
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
-dotenv.config({ path: envFile });
-
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
