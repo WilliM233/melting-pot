@@ -12,3 +12,7 @@ export function findOrCreateUser(profile) {
   }
   return users.get(id);
 }
+
+export function getUserById(id) {
+  return users[id]; // or however you store users
+}
