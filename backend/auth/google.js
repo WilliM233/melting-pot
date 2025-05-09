@@ -57,6 +57,7 @@ router.get(
   }),
   (req, res) => {
     console.log("✅ Google callback hit. Session:", req.session);
+    console.log("🌐 Redirecting to:", process.env.CLIENT_URL + '/meltview');
     res.redirect(process.env.CLIENT_URL + '/meltview');
   }
 );
