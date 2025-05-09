@@ -3,6 +3,8 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/me', (req, res) => {
+  console.log("🔍 /api/me called. isAuthenticated:", req.isAuthenticated?.(), "user:", req.user);
+  
   if (req.isAuthenticated()) {
     res.json(req.user);
   } else {
