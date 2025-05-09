@@ -1,8 +1,25 @@
-import React from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Meltview() {
-  // Temporary login mock
-  const isLoggedIn = false; // Change to true to test other view
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("http://localhost:3001/api/logout", {
+        method: "GET",
+        credentials: "include",
+      });
+      setUser(null);
+      navigate("/meltview");
+    } catch (err) {
+      console.error("Logout failed: ", err);
+    }
+  };
+
+  const isLoggedIn = !!user;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white px-6 py-12">
@@ -18,15 +35,23 @@ export default function Meltview() {
             className="w-full px-4 py-2 rounded bg-gray-800 text-white placeholder-gray-500 mb-6"
           />
           <a
-            href="#"
+            href="http://localhost:3001/auth/google"
             className="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 transition"
           >
-            Create Your Shelf
+            Sign in with Google
           </a>
         </div>
       ) : (
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">Welcome back, William</h1>
+          <div className="flex justify-end mb-4">
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+            >
+              Log Out
+            </button>
+          </div>
+          <h1 className="text-3xl font-bold mb-6">Welcome back, {user.name}</h1>
 
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Your Shelves</h2>
@@ -44,5 +69,5 @@ export default function Meltview() {
         </div>
       )}
     </div>
-  )
+  );
 }
