@@ -41,4 +41,9 @@ app.use(
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
+
+  app.use((req, res, next) => {
+  console.log("🧾 Session check:", req.session);
+  next();
+  });
   
