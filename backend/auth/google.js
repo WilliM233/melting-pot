@@ -7,8 +7,6 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { findOrCreateUser } from '../models/userStore.js';
 
-dotenv.config();
-
 const router = express.Router();
 const CLIENT_URL = process.env.CLIENT_URL;
 
