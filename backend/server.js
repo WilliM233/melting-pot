@@ -10,6 +10,7 @@ import cors from 'cors';
 const CLIENT_URL = process.env.CLIENT_URL;
 
 const app = express();
+app.set('trust proxy', 1); // trust first proxy
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
@@ -25,10 +26,9 @@ app.use(
       resave: false,
       saveUninitialized: false,
       cookie: {
-        secure: true,
-        httpOnly: true,
-        sameSite: 'none',
-      }
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      },
     })
   );
   
