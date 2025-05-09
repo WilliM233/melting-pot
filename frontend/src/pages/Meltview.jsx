@@ -9,7 +9,7 @@ export default function Meltview() {
 
   const handleLogout = async () => {
     try {
-      await fetch("http://localhost:3001/api/logout", {
+      await fetch(`${apiBase}/api/logout`, {
         method: "GET",
         credentials: "include",
       });
