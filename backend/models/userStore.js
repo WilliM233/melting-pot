@@ -1,19 +1,22 @@
 const users = new Map();
 
 export function findOrCreateUser(profile) {
-  const id = profile.id || profile.sub;
-  if (!users.has(id)) {
-    const user = {
-      id,
-      name: profile.displayName || 'Anonymous',
-      email: profile.emails?.[0]?.value || null,
+  let user = users.get(profile.id);
+  if (!user) {
+    user = {
+      id: profile.id,
+      name: profile.displayName,
+      email: profile.emails?.[0]?.value,
+      photo: profile.photos?.[0]?.value,
     };
-    users.set(id, user);
+    users.set(profile.id, user);
   }
-  return users.get(id);
+  return user;
 }
 
 export function getUserById(id) {
   console.log("getUserById called with:", id);
-  return users[id]; // or however you store users
+  const user = users.get(id);
+  console.log("Found user:", user);
+  return user;
 }

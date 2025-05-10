@@ -44,7 +44,7 @@ app.use(
   });
 
   app.use((req, res, next) => {
-  console.log("🧾 Session check:", req.session);
+  console.log("Session check:", req.session);
   next();
   });
   
