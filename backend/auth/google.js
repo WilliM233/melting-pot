@@ -63,7 +63,16 @@ router.get(
   }),
   (req, res) => {
     console.log("Google callback hit. Session:", req.session);
-    console.log("Redirecting to:", process.env.CLIENT_URL + '/meltview');
+
+    // Force session save
+    req.session.save((err) => {
+      if(err) {
+        console.error("Session save error:", err);
+        return res.redirect('/');
+      }
+    })
+
+    console.log("Session saved. Redirecting to:", process.env.CLIENT_URL + '/meltview');
     res.redirect(process.env.CLIENT_URL + '/meltview');
   }
 );
