@@ -27,8 +27,9 @@ app.use(
       saveUninitialized: false,
       cookie: {
         secure: process.env.NODE_ENV === 'production',
+        httpOnly: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        domain: process.env.NODE_ENV === 'production' ? 'meltingpointproductions.com' : undefined
+        domain: process.env.NODE_ENV === 'production' ? '.meltingpointproductions.com' : undefined
       },
     })
   );
