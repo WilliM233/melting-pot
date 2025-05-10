@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 console.log("CORS allowed origin:", CLIENT_URL);
-console.log("Server URL:", process.env.SERVER_URL
+console.log("Server URL:", process.env.SERVER_URL);
 
 app.use(
     session({
