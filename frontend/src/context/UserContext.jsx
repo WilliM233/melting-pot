@@ -7,22 +7,25 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const shouldRefetch = window.location.href.includes("loggedIn=true");
+
     fetch(`${apiBase}/api/me`, {
-      credentials: "include",
+      credentials: "include", // for sending cookies
     })
-      .then(res => {
-        if (!res.ok) {
-          console.warn("User not logged in");
-          return null;
+      .then((res) => res.ok ? res.json() : null)
+      .then((data) => {
+        setUser(data);
+
+        // ✅ Clean up the URL (remove loggedIn param)
+        if (shouldRefetch) {
+          const url = new URL(window.location);
+          url.searchParams.delete("loggedIn");
+          window.history.replaceState({}, document.title, url.toString());
         }
-        return res.json();
       })
-      .then(data => setUser(data))
-      .catch((err) => {
-        console.error("UserContext fetch error:", err);
-        setUser(null);
-      });
+      .catch(() => setUser(null));
   }, []);
+
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
