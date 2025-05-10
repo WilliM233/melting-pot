@@ -19,6 +19,7 @@ app.use(cors({
 }));
 
 console.log("CORS allowed origin:", CLIENT_URL);
+console.log("Server URL:", process.env.SERVER_URL
 
 app.use(
     session({
@@ -35,9 +36,11 @@ app.use(
   );
 
   app.use((req, res, next) => {
-    console.log('Incoming cookies:', req.headers.cookie);
+    console.log("Incoming cookies:", req.headers.cookie);
+    console.log("Session:", req.session);
     next();
   });
+
   
   app.use(passport.initialize());
   app.use(passport.session());
