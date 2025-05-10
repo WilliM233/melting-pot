@@ -32,6 +32,11 @@ app.use(
       },
     })
   );
+
+  app.use((req, res, next) => {
+    console.log('Incoming cookies:', req.headers.cookie);
+    next();
+  });
   
   app.use(passport.initialize());
   app.use(passport.session());
