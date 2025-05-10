@@ -69,7 +69,7 @@ router.get(
         return res.redirect('/');
       }
 
-      console.log("Session saved. Redirecting to:", process.env.CLIENT_URL + '/meltview');
+      console.log("About to redirect. Sending cookie:", res.getHeader('Set-Cookie'));
       res.redirect(process.env.CLIENT_URL + '/meltview');
     });
   }
