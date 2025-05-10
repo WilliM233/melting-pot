@@ -62,15 +62,14 @@ router.get(
   (req, res) => {
     console.log("Google callback hit. Session:", req.session);
 
-    // Force session save
     req.session.save((err) => {
-      if(err) {
+      if (err) {
         console.error("Session save error:", err);
         return res.redirect('/');
       }
 
-      console.log("About to redirect. Sending cookie:", res.getHeader('Set-Cookie'));
-      res.redirect(process.env.CLIENT_URL + '/meltview');
+      console.log("✅ Session saved. Redirecting to meltview...");
+      res.redirect(`${process.env.CLIENT_URL}/meltview?loggedIn=true`);
     });
   }
 );
