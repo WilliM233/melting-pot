@@ -70,10 +70,10 @@ router.get(
         console.error("Session save error:", err);
         return res.redirect('/');
       }
-    })
 
-    console.log("Session saved. Redirecting to:", process.env.CLIENT_URL + '/meltview');
-    res.redirect(process.env.CLIENT_URL + '/meltview');
+      console.log("Session saved. Redirecting to:", process.env.CLIENT_URL + '/meltview');
+      res.redirect(process.env.CLIENT_URL + '/meltview');
+    });
   }
 );
 
