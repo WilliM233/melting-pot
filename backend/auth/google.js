@@ -5,11 +5,11 @@ dotenv.config({ path: envFile });
 import express from 'express';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { findOrCreateUser } from '../models/userStore.js';
+import { findOrCreateUser, getUserById } from '../models/userStore.js';
 
 const router = express.Router();
-const CLIENT_URL = process.env.CLIENT_URL;
 
+const CLIENT_URL = process.env.CLIENT_URL;
 const callbackURL = `${process.env.SERVER_URL}/auth/google/callback`;
 
 console.log("Google OAuth callback URL:", callbackURL);
@@ -31,8 +31,6 @@ passport.use(
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
-
-import { getUserById } from '../models/userStore.js';
 
 passport.deserializeUser(async (id, done) => {
   try {
