@@ -73,7 +73,7 @@ export default function AccountSettings() {
             <h1 className="text-3xl font-bold mb-6">User Settings</h1>
 
             <div className="space-y-4">
-                <div className="flex items-start space-x-6 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:space-x-6 space-y-4 sm:space-y-0 mb-6">
                     {/* Profile Image */}
                     <div>
                         <img
@@ -83,7 +83,7 @@ export default function AccountSettings() {
                                     : "/assets/default-avatar.png"
                             }
                             alt="Profile preview"
-                            className="w-36 h-36 rounded-full mt-2 bg-gray-700 object-cover"
+                            className="w-32 h-32 sm:w-36 sm:h-36 rounded-full mt-2 bg-gray-700 object-cover"
                         />
                     </div>
 
