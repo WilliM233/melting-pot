@@ -65,5 +65,5 @@ Because great learning happens when ideas collide. This repo reflects my goal to
 
 If you'd like to connect, collaborate, or give feedback:
 
-- **GitHub**: [@WillliM233](https://github.com/WillliM233)  
+- **GitHub**: [@WillliM233](https://github.com/WilliM233)  
 - **LinkedIn**: [William Melton](https://www.linkedin.com/in/william-melton-2954a6149/)
