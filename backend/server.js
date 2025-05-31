@@ -7,9 +7,16 @@ import authRoutes from './auth/google.js';
 import userRoutes from './routes/user.js';
 import cors from 'cors';
 
+import dotenv from 'dotenv';
+dotenv.config();
+import { connectMongo } from './utils/connectMongo.js';
+import mongoose from 'mongoose';
+
+
 const CLIENT_URL = process.env.CLIENT_URL;
 
 const app = express();
+app.use(express.json({ limit: "5mb" }));
 app.set('trust proxy', 1); // trust first proxy
 const PORT = process.env.PORT || 3001;
 
@@ -46,6 +53,21 @@ app.use(
   
   app.use('/auth', authRoutes);
   app.use('/api', userRoutes);
+
+  app.get("/health", async (req, res) => {
+    try {
+      await mongoose.connection.db.admin().ping();
+      res.status(200).json({ status: "ok", db: "connected" });
+    } catch (err) {
+      res.status(500).json({ status: "error", message: "Mongo unavailable", error: err.message });
+    }
+  });
+
+  await connectMongo();
+
+  process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection:', reason);
+  });
   
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
