@@ -43,18 +43,6 @@ npm run dev
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] Add backend API prototype (Node/Express)
-- [ ] Integrate form handling and validation
-- [ ] Build authentication (JWT login system)
-- [ ] Add deployment via Netlify or Vercel
-- [ ] Write README docs per feature subfolder
-- [ ] Explore MongoDB integration
-- [ ] Add dark mode toggle
-
----
-
 ## 🙋‍♂️ Why “Melting Pot”?
 
 Because great learning happens when ideas collide. This repo reflects my goal to explore, blend, and refine skills across the full stack — one concept at a time.
