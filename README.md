@@ -8,9 +8,9 @@ This repo is a living space where I test new technologies, frameworks, and ideas
 
 ## 🔧 Tech Stack (so far)
 
-- **Frontend:** React, TypeScript, Tailwind CSS
-- **Backend:** Node.js, Express (planned)
-- **Other:** GitHub Projects for task tracking, Vite for bundling
+- **Frontend:** React, TypeScript, Tailwind CSS, Vite
+- **Backend:** Node.js, Express, MongoDB (Mongoose ODM), Passport.js (Google OAuth), dotenv
+- **Tooling & Infra:** GitHub Projects, Docker, PM2, MongoDB Atlas
 
 ---
 
