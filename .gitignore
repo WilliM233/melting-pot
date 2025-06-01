@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+dist/
+
+# Environment variables
+.env
+.env.*
+
+# Build / cache / logs
+.vscode/
+*.log
+*.cache
+.DS_Store
+
+# OS junk
+Thumbs.db
+
+# Database data (optional)
+*.sqlite
+*.db
+
+# Production secrets
+*.pem
