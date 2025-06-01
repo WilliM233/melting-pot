@@ -38,6 +38,7 @@ npm run dev
 |----------------|-------------|
 | `hero-section` | A responsive homepage hero layout using Tailwind CSS |
 | `authentication` | Logins via Google OAuth |
+| `user-settings` | Editable user profile with nickname, pronouns, about me, and profile image upload - includes persistent storage via MongoDB |
 
 > More features will be added soon as I iterate and explore!
 
